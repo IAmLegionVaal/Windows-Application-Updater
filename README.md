@@ -4,7 +4,16 @@ PowerShell audit and optional update workflow for applications supported by WinG
 
 > **Testing note:** This was tested by me to be working. User experience may vary.
 
+## One-click use
+
+1. Download and extract the repository.
+2. Double-click `Run-OneClick.bat`.
+3. The launcher checks WinGet and installs all available supported application updates non-interactively. There is no menu.
+4. Review the displayed exit code and logs in `C:\ProgramData\WindowsApplicationUpdater\Logs`.
+
 Included script: `Update-WindowsApplications.ps1`
+
+## PowerShell usage
 
 ```powershell
 .\Update-WindowsApplications.ps1
@@ -12,12 +21,8 @@ Included script: `Update-WindowsApplications.ps1`
 .\Update-WindowsApplications.ps1 -Upgrade -WhatIf
 ```
 
-The default mode records installed applications and available updates. `-Upgrade` requests installation of available WinGet updates.
+The default PowerShell mode records installed applications and available updates. `-Upgrade` accepts required source and package agreements, disables interactive prompts, requests all available WinGet upgrades and records the remaining update list.
 
-Logs are written to `C:\ProgramData\WindowsApplicationUpdater\Logs`.
+Exit codes: `0` success, `1` fatal error, `2` WinGet or verification warnings.
 
-Exit codes: `0` success, `1` fatal error, `2` WinGet returned a non-zero result.
-
-Use this project at your own risk. Review available updates and maintain current backups before applying software changes.
-
-MIT License.
+Review available updates and maintain current backups before applying software changes. MIT License.
